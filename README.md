@@ -1,8 +1,8 @@
-# E-Commerce Order Processing System - PSSC Project
+# Order Processing System - Proiect PSSC
 
 ## Descriere
 
-Sistem software pentru preluarea de comenzi, facturare și expediere, implementat conform pattern-ului prezentat la laborator (Lab 8).
+Sistem software pentru preluarea de comenzi, facturare și expediere, implementat conform pattern-ului prezentat la laborator.
 
 ### Arhitectura
 
@@ -15,39 +15,48 @@ Proiectul conține **3 contexte independente**, fiecare cu baza sa de date:
    - Trimite event către Invoicing prin Azure Service Bus
 
 2. **Invoicing** (Event Processor - background)
-   - Primește eventi de la Orders
+   - Primește notificări (event) de la Orders
    - Generează factura și o "trimite pe email" (simulat prin log)
    - Salvează factura în propria bază de date
    - Trimite event către Shipping
 
 3. **Shipping** (Event Processor - background)
-   - Primește eventi de la Invoicing
+   - Primește notificări (event) de la Invoicing
    - Pregătește coletul și îl predă curierului (simulat)
-   - Salvează expedirea în propria bază de date
+   - Salvează expedierea în propria bază de date
 
 ### Flow-ul complet
 
-```
-[Client/Postman] 
-       │
-       ▼
-┌─────────────────┐
-│   Orders.Api    │ ──► OrdersDb (SQL Server)
-│  (Validări +    │
-│   Plasare)      │
-└────────┬────────┘
-         │ Azure Service Bus (topic: "orders")
-         ▼
-┌─────────────────────────────┐
-│ Orders.Invoicing.EventProcessor │ ──► InvoicingDb (SQL Server)
-│     (Generare Factură)          │
-└────────────┬────────────────────┘
-             │ Azure Service Bus (topic: "invoices")
-             ▼
-┌─────────────────────────────────┐
-│ Invoicing.Shipping.EventProcessor │ ──► ShippingDb (SQL Server)
-│      (Expediere Colet)             │
-└────────────────────────────────────┘
+```mermaid
+graph LR
+    Client["Client / Postman"]
+    
+    subgraph Orders["Orders (API)"]
+        OrdersApi["Orders.Api<br/>(Validări + Plasare)"]
+        OrdersDb[("OrdersDb<br/>SQL Server")]
+    end
+    
+    subgraph Invoicing["Invoicing (Event Processor)"]
+        InvoicingProcessor["Orders.Invoicing.EventProcessor<br/>(Generare factură)"]
+        InvoicingDb[("InvoicingDb<br/>SQL Server")]
+    end
+    
+    subgraph Shipping["Shipping (Event Processor)"]
+        ShippingProcessor["Invoicing.Shipping.EventProcessor<br/>(Expediere colet)"]
+        ShippingDb[("ShippingDb<br/>SQL Server")]
+    end
+    
+    OrdersBus(["Azure Service Bus<br/>topic: orders"])
+    InvoicesBus(["Azure Service Bus<br/>topic: invoices"])
+    
+    Client -->|POST /api/orders| OrdersApi
+    OrdersApi --> OrdersDb
+    OrdersApi -->|publish| OrdersBus
+    OrdersBus -->|subscribe| InvoicingProcessor
+    InvoicingProcessor --> InvoicingDb
+    InvoicingProcessor -->|publish| InvoicesBus
+    InvoicesBus -->|subscribe| ShippingProcessor
+    ShippingProcessor --> ShippingDb
 ```
 
 ## Structura Proiectelor
@@ -61,10 +70,10 @@ Proiectul conține **3 contexte independente**, fiecare cu baza sa de date:
 - `Orders.Events.ServiceBus` - Implementare Azure Service Bus
 
 ### Context Invoicing
-- `Orders.Invoicing.EventProcessor` - Aplicație consolă care ascultă eventi
+- `Orders.Invoicing.EventProcessor` - Aplicație consolă care ascultă pe message bus
 - `Invoicing.Domain` - Modele, Operații, Workflow
 - `Invoicing.Data` - DbContext, Repositories
-- `Invoicing.Dto` - DTOs pentru eventi
+- `Invoicing.Dto` - DTOs pentru event-uri
 - `Invoicing.Events` / `Invoicing.Events.ServiceBus`
 
 ### Context Shipping
@@ -109,23 +118,19 @@ Actualizează `appsettings.json` în toate cele 3 aplicații:
 }
 ```
 
-**Orders.Invoicing.EventProcessor/appsettings.json:**
+**Orders.Invoicing.EventProcessor/Properties/launchSettings.json:**
 ```json
 {
-  "ConnectionStrings": {
-    "DefaultConnection": "Server=...;Database=InvoicingDb;...",
-    "ServiceBus": "..."
-  }
+   "ConnectionStrings:DefaultConnection": "Server=...;Database=InvoicingDb;...",
+   "ConnectionStrings:ServiceBus": "..."
 }
 ```
 
-**Invoicing.Shipping.EventProcessor/appsettings.json:**
+**Invoicing.Shipping.EventProcessor/Properties/launchSettings.json:**
 ```json
 {
-  "ConnectionStrings": {
-    "DefaultConnection": "Server=...;Database=ShippingDb;...",
-    "ServiceBus": "..."
-  }
+   "ConnectionStrings:DefaultConnection": "Server=...;Database=ShippingDb;...",
+   "ConnectionStrings:ServiceBus": "..."
 }
 ```
 
@@ -149,12 +154,12 @@ dotnet run
 
 ### 5. Testare
 
-Accesează Swagger UI la: `https://localhost:5001/swagger`
+Accesează Swagger UI la: `https://localhost:7172/swagger`
 
 Sau folosește Postman:
 
 ```http
-POST https://localhost:5001/api/orders
+POST https://localhost:7172/api/orders
 Content-Type: application/json
 
 {
@@ -183,7 +188,7 @@ Content-Type: application/json
 | PRD-00004 | Monitor 27 inch | 1200.00 RON |
 | PRD-00005 | Casti Gaming | 450.00 RON |
 
-## Workflow States (conform Lab 3/8)
+## Workflow-uri
 
 ### Orders Workflow
 ```
@@ -214,7 +219,7 @@ Toate validările se fac în **Orders.Api** (prima aplicație):
 - Cantitate: între 1 și 100
 
 ### Validări Semantice
-- Produsul există în baza de date (tabel prepopulat)
+- Produsul există în baza de date (tabelă prepopulată)
 
 ## Tehnologii
 
