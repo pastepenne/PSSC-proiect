@@ -13,6 +13,7 @@ namespace Orders.Domain.Workflows
         private readonly IOrdersRepository ordersRepository;
         private readonly ILogger<PlaceOrderWorkflow> logger;
 
+        // Injectam dependintele necesare
         public PlaceOrderWorkflow(IProductsRepository productsRepository, IOrdersRepository ordersRepository, ILogger<PlaceOrderWorkflow> logger)
         {
             this.productsRepository = productsRepository;
@@ -24,20 +25,20 @@ namespace Orders.Domain.Workflows
         {
             try
             {
-                // 1. Citim din baza de date produsele pentru validare semantică și prețuri
+                // Citim din baza de date produsele pentru validare semantica si preturi
                 IEnumerable<string> productCodesToCheck = command.InputOrderItems.Select(item => item.ProductCode);
                 List<ExistingProduct> existingProducts = await productsRepository.GetExistingProductsAsync(productCodesToCheck);
 
-                // 2. Executăm logica de business (pure functions)
+                // Executam logica de business (pure functions)
                 IOrder order = ExecuteBusinessLogic(command, existingProducts);
 
-                // 3. Salvăm în baza de date DOAR dacă comanda a fost plasată cu succes
+                // Salvam in baza de date doar daca comanda a fost plasata cu succes
                 if (order is PlacedOrder placedOrder)
                 {
                     await ordersRepository.SaveOrderAsync(placedOrder);
                 }
 
-                // 4. Returnăm evenimentul corespunzător stării
+                // Returnam evenimentul corespunzator starii
                 return order.ToEvent();
             }
             catch (Exception ex)
@@ -51,14 +52,14 @@ namespace Orders.Domain.Workflows
             PlaceOrderCommand command,
             List<ExistingProduct> existingProducts)
         {
-            // Funcție pentru verificarea existenței produsului
+            // Functie pentru verificarea existentei produsului
             Func<ProductCode, bool> checkProductExists = productCode =>
                 existingProducts.Any(p => p.ProductCode.Value == productCode.Value);
 
-            // Starea inițială - comanda nevalidată
+            // Starea initiala - comanda nevalidata
             UnvalidatedOrder unvalidatedOrder = new(command.InputOrderItems, command.ClientEmail, command.ShippingAddress);
 
-            // Transform chain - exact ca în Lab 8
+            // Transformam comanda din starea nevalidata pana la plasarea comenzii
             IOrder order = new ValidateOrderOperation(checkProductExists).Transform(unvalidatedOrder);
             order = new CalculateOrderOperation().Transform(order, existingProducts);
             order = new PlaceOrderOperation().Transform(order);

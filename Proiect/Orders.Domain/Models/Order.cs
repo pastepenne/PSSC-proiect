@@ -4,7 +4,7 @@ namespace Orders.Domain.Models
     {
         public interface IOrder { }
 
-        // Starea inițială - comanda nevalidată
+        // Starea initiala - comanda nevalidata
         public record UnvalidatedOrder : IOrder
         {
             public UnvalidatedOrder(IReadOnlyCollection<UnvalidatedOrderItem> itemList, string clientEmail, string shippingAddress)
@@ -19,7 +19,7 @@ namespace Orders.Domain.Models
             public string ShippingAddress { get; }
         }
 
-        // Starea de eroare - comanda invalidă
+        // Starea de eroare - comanda invalida
         public record InvalidOrder : IOrder
         {
             internal InvalidOrder(IReadOnlyCollection<UnvalidatedOrderItem> itemList, IEnumerable<string> reasons)
@@ -32,7 +32,7 @@ namespace Orders.Domain.Models
             public IEnumerable<string> Reasons { get; }
         }
 
-        // Starea validată
+        // Starea validata
         public record ValidatedOrder : IOrder
         {
             internal ValidatedOrder(IReadOnlyCollection<ValidatedOrderItem> itemList, ClientEmail clientEmail, ShippingAddress shippingAddress)
@@ -47,7 +47,7 @@ namespace Orders.Domain.Models
             public ShippingAddress ShippingAddress { get; }
         }
 
-        // Starea calculată (cu total calculat)
+        // Starea calculata (cu total calculat)
         public record CalculatedOrder : IOrder
         {
             internal CalculatedOrder(IReadOnlyCollection<CalculatedOrderItem> itemList, ClientEmail clientEmail, ShippingAddress shippingAddress, Price totalPrice)
@@ -64,7 +64,7 @@ namespace Orders.Domain.Models
             public Price TotalPrice { get; }
         }
 
-        // Starea finală - comanda plasată
+        // Starea finala - comanda plasata
         public record PlacedOrder : IOrder
         {
             internal PlacedOrder(IReadOnlyCollection<CalculatedOrderItem> itemList, ClientEmail clientEmail, ShippingAddress shippingAddress, Price totalPrice, DateTime placedDate, string orderNumber)

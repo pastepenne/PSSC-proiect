@@ -16,6 +16,8 @@ namespace Orders.Api
         {
             WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
+            // Adaugam servicii in containerul de dependinte (DI container)
+            
             // Add DbContext
             builder.Services.AddDbContext<OrdersContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));

@@ -1,6 +1,6 @@
 namespace Orders.Data.Models
 {
-    // DTO pentru tabelul Product (prepopulat)
+    // DTO pentru tabelul Product
     public class ProductDto
     {
         public int ProductId { get; set; }

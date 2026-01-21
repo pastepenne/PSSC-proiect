@@ -1,5 +1,5 @@
 namespace Orders.Domain.Models
 {
-    // Reprezintă un item din comandă, validat
+    // Reprezinta un item din comanda, validat
     public record ValidatedOrderItem(ProductCode ProductCode, Quantity Quantity);
 }

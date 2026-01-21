@@ -3,7 +3,7 @@ using System.Text;
 
 namespace Orders.Dto.Events
 {
-    // Evenimentul trimis către Invoicing când o comandă a fost plasată cu succes
+    // Eventul trimis catre Invoicing cand o comanda a fost plasata cu succes
     public record OrderPlacedEvent
     {
         public string OrderNumber { get; init; } = string.Empty;

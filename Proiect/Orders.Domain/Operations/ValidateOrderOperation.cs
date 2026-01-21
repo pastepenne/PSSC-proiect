@@ -16,7 +16,7 @@ namespace Orders.Domain.Operations
         {
             (List<ValidatedOrderItem> validatedItems, List<string> validationErrors) = ValidateListOfItems(unvalidatedOrder);
             
-            // Validăm și email-ul și adresa de shipping
+            // Validam si email-ul si adresa de shipping
             ClientEmail? clientEmail = ValidateClientEmail(unvalidatedOrder.ClientEmail, validationErrors);
             ShippingAddress? shippingAddress = ValidateShippingAddress(unvalidatedOrder.ShippingAddress, validationErrors);
 
@@ -69,14 +69,14 @@ namespace Orders.Domain.Operations
 
         private ProductCode? ValidateProductCode(UnvalidatedOrderItem item, List<string> errors)
         {
-            // Validare sintactică
+            // Validare sintactica
             if (!ProductCode.TryParse(item.ProductCode, out ProductCode? productCode))
             {
                 errors.Add($"Invalid product code format: {item.ProductCode}");
                 return null;
             }
 
-            // Validare semantică - produsul există?
+            // Validare semantica - produsul exista?
             if (!checkProductExists(productCode!))
             {
                 errors.Add($"Product not found: {item.ProductCode}");

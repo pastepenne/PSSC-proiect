@@ -32,13 +32,13 @@ namespace Orders.Api.Controllers
         {
             logger.LogInformation("Received order request from {ClientEmail}", inputOrder.ClientEmail);
 
-            // Mapare din InputOrder în UnvalidatedOrderItem
+            // Mapare din InputOrder in UnvalidatedOrderItem
             var unvalidatedItems = inputOrder.Items
                 .Select(item => new UnvalidatedOrderItem(item.ProductCode, item.Quantity))
                 .ToList()
                 .AsReadOnly();
 
-            // Creare comandă
+            // Creare comanda nevalidata
             PlaceOrderCommand command = new(unvalidatedItems, inputOrder.ClientEmail, inputOrder.ShippingAddress);
 
             // Executare workflow
@@ -55,11 +55,12 @@ namespace Orders.Api.Controllers
             return response;
         }
 
+        // Comanda valida (Happy Flow)
         private async Task<IActionResult> HandleSuccess(OrderPlaceSucceededEvent successEvent)
         {
             logger.LogInformation("Order {OrderNumber} placed successfully", successEvent.OrderNumber);
 
-            // Trimitem event către Invoicing prin Service Bus
+            // Trimitem event catre Invoicing prin Azure Service Bus
             var orderPlacedEvent = new DtoOrderPlacedEvent
             {
                 OrderNumber = successEvent.OrderNumber,
@@ -88,6 +89,7 @@ namespace Orders.Api.Controllers
             });
         }
 
+        // Comanda invalida (Failure Flow)
         private IActionResult HandleFailure(OrderPlaceFailedEvent failedEvent)
         {
             logger.LogWarning("Order placement failed: {Reasons}", string.Join(", ", failedEvent.Reasons));

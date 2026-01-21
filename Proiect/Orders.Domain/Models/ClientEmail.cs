@@ -23,10 +23,11 @@ namespace Orders.Domain.Models
             }
         }
 
+        // Verifica daca email-ul respecta pattern-ul definit in regex
         private static bool IsValid(string stringValue) => ValidPattern.IsMatch(stringValue);
 
         public override string ToString() => Value;
-
+        
         public static bool TryParse(string stringValue, out ClientEmail? clientEmail)
         {
             bool isValid = false;

@@ -15,7 +15,7 @@ namespace Orders.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Product table (prepopulat)
+            // Tabela produse existente (va avea deja date la pornire)
             modelBuilder.Entity<ProductDto>(entity =>
             {
                 entity.ToTable("Product");
@@ -26,7 +26,7 @@ namespace Orders.Data
                 entity.HasIndex(p => p.Code).IsUnique();
             });
 
-            // Order table
+            // Tabela de comenzi (fiecare comanda va adauga o inregistrare aici)
             modelBuilder.Entity<OrderDto>(entity =>
             {
                 entity.ToTable("Order");
@@ -38,7 +38,7 @@ namespace Orders.Data
                 entity.HasIndex(o => o.OrderNumber).IsUnique();
             });
 
-            // OrderItem table
+            // Tabela de itemi ai fiecarei comenzi (fiecare comanda poate avea mai multi itemi)
             modelBuilder.Entity<OrderItemDto>(entity =>
             {
                 entity.ToTable("OrderItem");

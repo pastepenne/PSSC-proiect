@@ -3,7 +3,7 @@ using static Orders.Domain.Models.Order;
 
 namespace Orders.Domain.Operations
 {
-    // ExistingProduct reprezintă produsul din baza de date cu prețul lui
+    // ExistingProduct reprezinta produsul din baza de date cu pretul lui
     public record ExistingProduct(ProductCode ProductCode, Price UnitPrice);
 
     internal sealed class CalculateOrderOperation : OrderOperation<List<ExistingProduct>>

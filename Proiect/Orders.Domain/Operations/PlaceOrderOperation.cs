@@ -6,7 +6,7 @@ namespace Orders.Domain.Operations
     {
         protected override IOrder OnCalculated(CalculatedOrder calculatedOrder)
         {
-            // Generăm un număr unic de comandă
+            // Generam un numar unic de comanda
             string orderNumber = $"ORD-{DateTime.Now:yyyyMMdd}-{Guid.NewGuid().ToString()[..8].ToUpper()}";
 
             return new PlacedOrder(
