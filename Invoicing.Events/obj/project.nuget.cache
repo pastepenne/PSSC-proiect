@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "k5FuCrLmzn8=",
+  "success": true,
+  "projectFilePath": "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Invoicing.Events\\Invoicing.Events.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Carina\\.nuget\\packages\\cloudnative.cloudevents\\2.7.1\\cloudnative.cloudevents.2.7.1.nupkg.sha512",
+    "C:\\Users\\Carina\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
+    "C:\\Users\\Carina\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.22\\microsoft.netcore.app.ref.8.0.22.nupkg.sha512",
+    "C:\\Users\\Carina\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.22\\microsoft.windowsdesktop.app.ref.8.0.22.nupkg.sha512",
+    "C:\\Users\\Carina\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.22\\microsoft.aspnetcore.app.ref.8.0.22.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,748 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Invoicing.Shipping.EventProcessor\\Invoicing.Shipping.EventProcessor.csproj": {}
+  },
+  "projects": {
+    "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Invoicing.Dto\\Invoicing.Dto.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Invoicing.Dto\\Invoicing.Dto.csproj",
+        "projectName": "Invoicing.Dto",
+        "projectPath": "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Invoicing.Dto\\Invoicing.Dto.csproj",
+        "packagesPath": "C:\\Users\\Carina\\.nuget\\packages\\",
+        "outputPath": "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Invoicing.Dto\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Carina\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Invoicing.Events.ServiceBus\\Invoicing.Events.ServiceBus.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Invoicing.Events.ServiceBus\\Invoicing.Events.ServiceBus.csproj",
+        "projectName": "Invoicing.Events.ServiceBus",
+        "projectPath": "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Invoicing.Events.ServiceBus\\Invoicing.Events.ServiceBus.csproj",
+        "packagesPath": "C:\\Users\\Carina\\.nuget\\packages\\",
+        "outputPath": "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Invoicing.Events.ServiceBus\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Carina\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Invoicing.Events\\Invoicing.Events.csproj": {
+                "projectPath": "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Invoicing.Events\\Invoicing.Events.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Azure.Messaging.ServiceBus": {
+              "target": "Package",
+              "version": "[7.17.0, )"
+            },
+            "CloudNative.CloudEvents.SystemTextJson": {
+              "target": "Package",
+              "version": "[2.7.1, )"
+            },
+            "Microsoft.Extensions.Logging.Abstractions": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Invoicing.Events\\Invoicing.Events.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Invoicing.Events\\Invoicing.Events.csproj",
+        "projectName": "Invoicing.Events",
+        "projectPath": "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Invoicing.Events\\Invoicing.Events.csproj",
+        "packagesPath": "C:\\Users\\Carina\\.nuget\\packages\\",
+        "outputPath": "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Invoicing.Events\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Carina\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "CloudNative.CloudEvents": {
+              "target": "Package",
+              "version": "[2.7.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Invoicing.Shipping.EventProcessor\\Invoicing.Shipping.EventProcessor.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Invoicing.Shipping.EventProcessor\\Invoicing.Shipping.EventProcessor.csproj",
+        "projectName": "Invoicing.Shipping.EventProcessor",
+        "projectPath": "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Invoicing.Shipping.EventProcessor\\Invoicing.Shipping.EventProcessor.csproj",
+        "packagesPath": "C:\\Users\\Carina\\.nuget\\packages\\",
+        "outputPath": "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Invoicing.Shipping.EventProcessor\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Carina\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Invoicing.Dto\\Invoicing.Dto.csproj": {
+                "projectPath": "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Invoicing.Dto\\Invoicing.Dto.csproj"
+              },
+              "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Invoicing.Events.ServiceBus\\Invoicing.Events.ServiceBus.csproj": {
+                "projectPath": "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Invoicing.Events.ServiceBus\\Invoicing.Events.ServiceBus.csproj"
+              },
+              "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Invoicing.Events\\Invoicing.Events.csproj": {
+                "projectPath": "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Invoicing.Events\\Invoicing.Events.csproj"
+              },
+              "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Shipping.Data\\Shipping.Data.csproj": {
+                "projectPath": "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Shipping.Data\\Shipping.Data.csproj"
+              },
+              "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Shipping.Domain\\Shipping.Domain.csproj": {
+                "projectPath": "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Shipping.Domain\\Shipping.Domain.csproj"
+              },
+              "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Shipping.Events.ServiceBus\\Shipping.Events.ServiceBus.csproj": {
+                "projectPath": "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Shipping.Events.ServiceBus\\Shipping.Events.ServiceBus.csproj"
+              },
+              "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Shipping.Events\\Shipping.Events.csproj": {
+                "projectPath": "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Shipping.Events\\Shipping.Events.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.Extensions.Azure": {
+              "target": "Package",
+              "version": "[1.7.1, )"
+            },
+            "Microsoft.Extensions.Hosting": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[8.0.22, 8.0.22]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Shipping.Data\\Shipping.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Shipping.Data\\Shipping.Data.csproj",
+        "projectName": "Shipping.Data",
+        "projectPath": "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Shipping.Data\\Shipping.Data.csproj",
+        "packagesPath": "C:\\Users\\Carina\\.nuget\\packages\\",
+        "outputPath": "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Shipping.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Carina\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Shipping.Domain\\Shipping.Domain.csproj": {
+                "projectPath": "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Shipping.Domain\\Shipping.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Shipping.Domain\\Shipping.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Shipping.Domain\\Shipping.Domain.csproj",
+        "projectName": "Shipping.Domain",
+        "projectPath": "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Shipping.Domain\\Shipping.Domain.csproj",
+        "packagesPath": "C:\\Users\\Carina\\.nuget\\packages\\",
+        "outputPath": "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Shipping.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Carina\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.Extensions.Logging.Abstractions": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Shipping.Events.ServiceBus\\Shipping.Events.ServiceBus.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Shipping.Events.ServiceBus\\Shipping.Events.ServiceBus.csproj",
+        "projectName": "Shipping.Events.ServiceBus",
+        "projectPath": "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Shipping.Events.ServiceBus\\Shipping.Events.ServiceBus.csproj",
+        "packagesPath": "C:\\Users\\Carina\\.nuget\\packages\\",
+        "outputPath": "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Shipping.Events.ServiceBus\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Carina\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Shipping.Events\\Shipping.Events.csproj": {
+                "projectPath": "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Shipping.Events\\Shipping.Events.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Azure.Messaging.ServiceBus": {
+              "target": "Package",
+              "version": "[7.17.0, )"
+            },
+            "CloudNative.CloudEvents.SystemTextJson": {
+              "target": "Package",
+              "version": "[2.7.1, )"
+            },
+            "Microsoft.Extensions.Logging.Abstractions": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Shipping.Events\\Shipping.Events.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Shipping.Events\\Shipping.Events.csproj",
+        "projectName": "Shipping.Events",
+        "projectPath": "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Shipping.Events\\Shipping.Events.csproj",
+        "packagesPath": "C:\\Users\\Carina\\.nuget\\packages\\",
+        "outputPath": "D:\\facultate\\PSSC\\proiect-pssc-main\\Proiect\\Shipping.Events\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Carina\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "CloudNative.CloudEvents": {
+              "target": "Package",
+              "version": "[2.7.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
