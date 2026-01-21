@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "Orders.Invoicing.EventProcessor": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "NETCORE_ENVIRONMENT": "development",
+        "ConnectionStrings:DefaultConnection": "Server=(localdb)\\PSSC;Database=InvoicingDb;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True",
+        "ConnectionStrings:ServiceBus": "Endpoint=sb://NAMESPACE_NAME.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey="
+
+      }
+    }
+  }
+}
