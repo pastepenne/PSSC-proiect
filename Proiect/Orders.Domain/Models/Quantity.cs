@@ -6,7 +6,7 @@ namespace Orders.Domain.Models
     {
         public int Value { get; }
 
-        internal Quantity(int value)
+        public Quantity(int value)
         {
             if (IsValid(value))
             {
@@ -18,7 +18,7 @@ namespace Orders.Domain.Models
             }
         }
 
-        private static bool IsValid(int value) => value > 0 && value <= 100;
+        private static bool IsValid(int value) => value > 0;
 
         public override string ToString() => Value.ToString();
 

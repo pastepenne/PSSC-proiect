@@ -5,11 +5,11 @@ namespace Orders.Domain.Operations
 {
     internal sealed class ValidateOrderOperation : OrderOperation
     {
-        private readonly Func<ProductCode, bool> checkProductExists;
+        private readonly Func<(ProductCode, Quantity), bool> checkProductAvailable;
 
-        internal ValidateOrderOperation(Func<ProductCode, bool> checkProductExists)
+        internal ValidateOrderOperation(Func<(ProductCode, Quantity), bool> checkProductAvailable)
         {
-            this.checkProductExists = checkProductExists;
+            this.checkProductAvailable = checkProductAvailable;
         }
 
         protected override IOrder OnUnvalidated(UnvalidatedOrder unvalidatedOrder)
@@ -50,10 +50,9 @@ namespace Orders.Domain.Operations
         private ValidatedOrderItem? ValidateItem(UnvalidatedOrderItem unvalidatedItem, List<string> validationErrors)
         {
             List<string> currentErrors = new();
-
-            ProductCode? productCode = ValidateProductCode(unvalidatedItem, currentErrors);
-            Quantity? quantity = ValidateQuantity(unvalidatedItem, currentErrors);
-
+            
+            (ProductCode? productCode, Quantity? quantity) = ValidateProductAvailability(unvalidatedItem, currentErrors);
+            
             ValidatedOrderItem? validItem = null;
             if (!currentErrors.Any())
             {
@@ -66,35 +65,30 @@ namespace Orders.Domain.Operations
 
             return validItem;
         }
-
-        private ProductCode? ValidateProductCode(UnvalidatedOrderItem item, List<string> errors)
+        
+        private (ProductCode?, Quantity?) ValidateProductAvailability(UnvalidatedOrderItem item, List<string> errors)
         {
             // Validare sintactica
             if (!ProductCode.TryParse(item.ProductCode, out ProductCode? productCode))
             {
                 errors.Add($"Invalid product code format: {item.ProductCode}");
-                return null;
+                return (null, null);
             }
-
-            // Validare semantica - produsul exista?
-            if (!checkProductExists(productCode!))
-            {
-                errors.Add($"Product not found: {item.ProductCode}");
-                return null;
-            }
-
-            return productCode;
-        }
-
-        private static Quantity? ValidateQuantity(UnvalidatedOrderItem item, List<string> errors)
-        {
+            
             if (!Quantity.TryParse(item.Quantity, out Quantity? quantity))
             {
                 errors.Add($"Invalid quantity for product {item.ProductCode}: {item.Quantity}. Must be between 1 and 100.");
-                return null;
+                return (null, null);
+            }
+            
+            // Validare semantica - produsul exista si este disponibil?
+            if (!checkProductAvailable((productCode!, quantity!)))
+            {
+                errors.Add($"Product not found, or not available: {productCode}");
+                return (null, null);
             }
 
-            return quantity;
+            return (productCode, quantity);
         }
 
         private static ClientEmail? ValidateClientEmail(string email, List<string> errors)

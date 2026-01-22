@@ -17,6 +17,7 @@ namespace Orders.Api.Controllers
         private readonly PlaceOrderWorkflow placeOrderWorkflow;
         private readonly IEventSender eventSender;
 
+        // Injectam dependintele necesare
         public OrdersController(
             ILogger<OrdersController> logger,
             PlaceOrderWorkflow placeOrderWorkflow,

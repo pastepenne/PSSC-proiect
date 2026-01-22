@@ -36,6 +36,11 @@ namespace Orders.Domain.Workflows
                 if (order is PlacedOrder placedOrder)
                 {
                     await ordersRepository.SaveOrderAsync(placedOrder);
+
+                    foreach (var orderItem in command.InputOrderItems)
+                    {
+                        await productsRepository.UpdateStockAsync(orderItem.ProductCode, orderItem.Quantity);
+                    }
                 }
 
                 // Returnam evenimentul corespunzator starii
@@ -52,15 +57,21 @@ namespace Orders.Domain.Workflows
             PlaceOrderCommand command,
             List<ExistingProduct> existingProducts)
         {
-            // Functie pentru verificarea existentei produsului
-            Func<ProductCode, bool> checkProductExists = productCode =>
-                existingProducts.Any(p => p.ProductCode.Value == productCode.Value);
+            // Functie pentru verificarea disponibilitatii produsului (cod produs existent si cantitate disponibila)
+            Func<(ProductCode, Quantity), bool> checkProductAvailable = (productCodeAndQuantity) =>
+            {
+                ProductCode productCode = productCodeAndQuantity.Item1;
+                Quantity quantity = productCodeAndQuantity.Item2;
+                
+                ExistingProduct? product = existingProducts.FirstOrDefault(p => p.ProductCode.Value == productCode.Value);
+                return product is not null && product.Available.Value >= quantity.Value;
+            };
 
             // Starea initiala - comanda nevalidata
             UnvalidatedOrder unvalidatedOrder = new(command.InputOrderItems, command.ClientEmail, command.ShippingAddress);
 
             // Transformam comanda din starea nevalidata pana la plasarea comenzii
-            IOrder order = new ValidateOrderOperation(checkProductExists).Transform(unvalidatedOrder);
+            IOrder order = new ValidateOrderOperation(checkProductAvailable).Transform(unvalidatedOrder);
             order = new CalculateOrderOperation().Transform(order, existingProducts);
             order = new PlaceOrderOperation().Transform(order);
 
